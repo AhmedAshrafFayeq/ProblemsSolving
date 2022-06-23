@@ -25,7 +25,22 @@ func reverse(str: String) -> String {
 }
 
 let str = "Ahmed Ashraf"
-print("reversed: \(reverse(str:  str))")
+print("reversed: \(reverse(str: str))")
+
+//--------------------------------------------
+
+func uniqueValues(str: String) -> String {
+   var unique = [Character]()
+    for letter in str {
+        if !unique.contains(letter) {
+            unique.append(letter)
+        }
+    }
+    return String(unique)
+}
+
+let strr = "Ahmad Ashraf"
+print("unique: \(uniqueValues(str: strr))")
 
 //--------------------------------------------
 
