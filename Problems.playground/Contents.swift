@@ -13,6 +13,21 @@ func secondsToHoursMinutesSeconds(_ seconds: Int) -> (Int, Int, Int) {
 
 print(secondsToHoursMinutesSeconds(70 + 70 * 60 + 1 * 60 * 60))
 
+//--------------------------------------------
+
+func reverse(str: String) -> String {
+    /// tempStr is intermidiate result
+    let result = str.reduce("") { (tempStr, newChar) -> String in
+        /// we are concatinating string in reverse order
+        return "\(newChar)" + tempStr
+    }
+    return result
+}
+
+let str = "Ahmed Ashraf"
+print("reversed: \(reverse(str:  str))")
+
+//--------------------------------------------
 
 class Solution {
     func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
@@ -29,3 +44,7 @@ class Solution {
 
 var solution = Solution()
 print(solution.twoSum([1,2,3,4], 5))
+
+
+
+
