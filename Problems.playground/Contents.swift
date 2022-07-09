@@ -42,6 +42,10 @@ func uniqueValues(str: String) -> String {
 let strr = "Ahmad Ashraf"
 print("unique: \(uniqueValues(str: strr))")
 
+let strrrr = "aHmEd AhMeD"
+
+print("unique: \(uniqueValues(str: strrrr))")
+
 //--------------------------------------------
 
 class Solution {
