@@ -100,3 +100,17 @@ rootNode.leftNode?.rightNode    = TreeNode(val: 100)
 rootNode.leftNode?.rightNode?.rightNode = TreeNode(val: 100)
 
 print(MaximumDepthCalculator.calculate(rootNode))
+
+
+
+//--------------------------------------------
+        //Factorial in Recursion//
+
+func factorial(_ val: Int) -> Int {
+    if val == 0 {
+        return 1
+    }
+    return val * factorial(val - 1)
+}
+
+print("Fact = \(factorial(5))")
