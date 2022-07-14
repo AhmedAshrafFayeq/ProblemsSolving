@@ -68,7 +68,7 @@ print(solution.twoSum([1,2,3,4], 5))
 //--------------------------------------------
         //Find Maximum Binary Tree Depth//
 
-class TreeNode {
+final class TreeNode {
     var val: Int
     var rightNode: TreeNode?
     var leftNode: TreeNode?
@@ -78,3 +78,25 @@ class TreeNode {
     }
 }
 
+
+final class MaximumDepthCalculator {
+    static func calculate(_ node: TreeNode?) -> Int {
+        guard let rootNode = node else {
+            return 0
+        }
+        let leftSideNodeDepth = calculate(rootNode.leftNode) + 1
+        let rightSideNodeDepth = calculate(rootNode.rightNode) + 1
+        print("\(leftSideNodeDepth)  \(rightSideNodeDepth)")
+        return max(leftSideNodeDepth, rightSideNodeDepth)
+    }
+}
+
+let rootNode                    = TreeNode(val: 3)
+rootNode.rightNode              = TreeNode(val: 9)
+rootNode.rightNode?.rightNode   = TreeNode(val: 20)
+rootNode.leftNode               = TreeNode(val: 5)
+rootNode.leftNode?.leftNode     = TreeNode(val: 10)
+rootNode.leftNode?.rightNode    = TreeNode(val: 100)
+rootNode.leftNode?.rightNode?.rightNode = TreeNode(val: 100)
+
+print(MaximumDepthCalculator.calculate(rootNode))
