@@ -65,5 +65,16 @@ var solution = Solution()
 print(solution.twoSum([1,2,3,4], 5))
 
 
+//--------------------------------------------
+        //Find Maximum Binary Tree Depth//
 
+class TreeNode {
+    var val: Int
+    var rightNode: TreeNode?
+    var leftNode: TreeNode?
+    
+    init(val: Int) {
+        self.val = val
+    }
+}
 
