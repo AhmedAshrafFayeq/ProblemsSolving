@@ -102,7 +102,6 @@ rootNode.leftNode?.rightNode?.rightNode = TreeNode(val: 100)
 print(MaximumDepthCalculator.calculate(rootNode))
 
 
-
 //--------------------------------------------
         //Factorial in Recursion//
 
@@ -114,3 +113,8 @@ func factorial(_ val: Int) -> Int {
 }
 
 print("Fact = \(factorial(5))")
+
+//--------------------------------------------
+        //Divisior = take integer and return the sum of all its diversor//
+
+
