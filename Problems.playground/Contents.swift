@@ -117,4 +117,16 @@ print("Fact = \(factorial(5))")
 //--------------------------------------------
         //Divisior = take integer and return the sum of all its diversor//
 
+func divisorSum(number: Int) -> Int {
+    var sum = number
+    var div = number / 2
+    while(div > 0) {
+        if number % div == 0 {
+            sum += div
+        }
+        div -= 1
+    }
+    return sum
+}
 
+print("divSum of 6 = \(divisorSum(number: 6))")
