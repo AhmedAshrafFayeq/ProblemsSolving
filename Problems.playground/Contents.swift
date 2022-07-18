@@ -178,12 +178,59 @@ binaryRootNode.leftNode?.rightNode    = TreeNode(val: 3)
 
 var invertBinarryTree = InvertBinaryTree.invert(binaryRootNode)!
 
-print("binaryRootNode: \(invertBinarryTree.val)")
-print("binaryRootNode.rightNode: \(invertBinarryTree.rightNode?.val)")
-print("binaryRootNode.rightNode?.rightNode\(invertBinarryTree.rightNode?.rightNode?.val)")
-print("binaryRootNode.rightNode?.leftNode\(invertBinarryTree.rightNode?.leftNode?.val)")
-print("binaryRootNode.leftNode\(invertBinarryTree.leftNode?.val)")
-print("binaryRootNode.leftNode?.leftNode\(invertBinarryTree.leftNode?.leftNode?.val)")
-print("binaryRootNode.leftNode?.rightNode\(invertBinarryTree.leftNode?.rightNode?.val)")
+print("binaryRootNode:                      \(invertBinarryTree.val)")
+print("binaryRootNode.rightNode:            \(invertBinarryTree.rightNode?.val ?? 0)")
+print("binaryRootNode.rightNode?.rightNode: \(invertBinarryTree.rightNode?.rightNode?.val ?? 0)")
+print("binaryRootNode.rightNode?.leftNode:  \(invertBinarryTree.rightNode?.leftNode?.val ?? 0)")
+print("binaryRootNode.leftNode:             \(invertBinarryTree.leftNode?.val ?? 0)")
+print("binaryRootNode.leftNode?.leftNode:   \(invertBinarryTree.leftNode?.leftNode?.val ?? 0)")
+print("binaryRootNode.leftNode?.rightNode:  \(invertBinarryTree.leftNode?.rightNode?.val ?? 0)")
+
+
+//--------------------------------------------
+        //Reverse LinkedList//
+
+final class LinkedNode {
+    var val: Int
+    var next: LinkedNode?
+    
+    init(val: Int) {
+        self.val = val
+    }
+}
+
+final class ReversedLinkedList {
+    
+    static func reverse(_ node: LinkedNode?) -> LinkedNode? {
+        guard let node = node else {
+            return nil
+        }
+        
+        var nextNode = node.next
+        var currentNode = LinkedNode(val: node.val)
+        
+        while nextNode != nil {
+            let newNode = LinkedNode(val: nextNode!.val)
+            newNode.next = currentNode
+            currentNode = newNode
+            nextNode = nextNode?.next
+        }
+        return currentNode
+    }
+}
+
+
+var linkedNode = LinkedNode(val: 1)
+linkedNode.next = LinkedNode(val: 2)
+linkedNode.next?.next = LinkedNode(val: 3)
+linkedNode.next?.next?.next = LinkedNode(val: 4)
+linkedNode.next?.next?.next?.next = LinkedNode(val: 5)
+
+let reversedLinkedNode = ReversedLinkedList.reverse(linkedNode)
+print("root node \(reversedLinkedNode?.val ?? 0)")
+print("root node \(reversedLinkedNode?.next?.val ?? 0)")
+print("root node \(reversedLinkedNode?.next?.next?.val ?? 0)")
+print("root node \(reversedLinkedNode?.next?.next?.next?.val ?? 0)")
+print("root node \(reversedLinkedNode?.next?.next?.next?.next?.val ?? 0)")
 
 
