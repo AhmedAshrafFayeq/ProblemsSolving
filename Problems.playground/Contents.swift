@@ -64,44 +64,6 @@ class Solution {
 var solution = Solution()
 print(solution.twoSum([1,2,3,4], 5))
 
-
-//--------------------------------------------
-        //Find Maximum Binary Tree Depth//
-
-final class TreeNode {
-    var val: Int
-    var rightNode: TreeNode?
-    var leftNode: TreeNode?
-    
-    init(val: Int) {
-        self.val = val
-    }
-}
-
-
-final class MaximumDepthCalculator {
-    static func calculate(_ node: TreeNode?) -> Int {
-        guard let rootNode = node else {
-            return 0
-        }
-        let leftSideNodeDepth = calculate(rootNode.leftNode) + 1
-        let rightSideNodeDepth = calculate(rootNode.rightNode) + 1
-        print("\(leftSideNodeDepth)  \(rightSideNodeDepth)")
-        return max(leftSideNodeDepth, rightSideNodeDepth)
-    }
-}
-
-let rootNode                    = TreeNode(val: 3)
-rootNode.rightNode              = TreeNode(val: 9)
-rootNode.rightNode?.rightNode   = TreeNode(val: 20)
-rootNode.leftNode               = TreeNode(val: 5)
-rootNode.leftNode?.leftNode     = TreeNode(val: 10)
-rootNode.leftNode?.rightNode    = TreeNode(val: 100)
-rootNode.leftNode?.rightNode?.rightNode = TreeNode(val: 100)
-
-print(MaximumDepthCalculator.calculate(rootNode))
-
-
 //--------------------------------------------
         //Factorial in Recursion//
 
@@ -130,3 +92,98 @@ func divisorSum(number: Int) -> Int {
 }
 
 print("divSum of 6 = \(divisorSum(number: 6))")
+
+
+//--------------------------------------------
+        //Find Maximum Binary Tree Depth//
+
+final class TreeNode {
+    var val: Int
+    var rightNode: TreeNode?
+    var leftNode: TreeNode?
+    
+    init(val: Int) {
+        self.val = val
+        rightNode = nil
+        leftNode = nil
+    }
+}
+
+
+final class MaximumDepthCalculator {
+    static func calculate(_ node: TreeNode?) -> Int {
+        guard let rootNode = node else {
+            return 0
+        }
+        let leftSideNodeDepth = calculate(rootNode.leftNode) + 1
+        let rightSideNodeDepth = calculate(rootNode.rightNode) + 1
+        print("\(leftSideNodeDepth)  \(rightSideNodeDepth)")
+        return max(leftSideNodeDepth, rightSideNodeDepth)
+    }
+}
+
+let rootNode                    = TreeNode(val: 3)
+rootNode.rightNode              = TreeNode(val: 9)
+rootNode.rightNode?.rightNode   = TreeNode(val: 20)
+rootNode.leftNode               = TreeNode(val: 5)
+rootNode.leftNode?.leftNode     = TreeNode(val: 10)
+rootNode.leftNode?.rightNode    = TreeNode(val: 100)
+rootNode.leftNode?.rightNode?.rightNode = TreeNode(val: 100)
+
+print(MaximumDepthCalculator.calculate(rootNode))
+
+
+//--------------------------------------------
+        //Invert Binary Tree//
+
+final class InvertBinaryTree {
+    static func invert(_ node: TreeNode?) -> TreeNode? {
+        guard let node = node else {
+            return nil
+        }
+        let leftSideNode = invert(node.leftNode)
+        let rightSideNode = invert(node.rightNode)
+        
+        node.leftNode = rightSideNode
+        node.rightNode = leftSideNode
+        
+        return node
+    }
+}
+
+//           4
+//         /   \
+//       2       7
+//     /   \    /  \
+//   1     3   6    9
+
+
+// OUTPUT:
+
+//           4
+//         /   \
+//       7       2
+//     /   \    /  \
+//   9     6   3    1
+
+
+
+let binaryRootNode                    = TreeNode(val: 4)
+binaryRootNode.rightNode              = TreeNode(val: 7)
+binaryRootNode.rightNode?.rightNode   = TreeNode(val: 9)
+binaryRootNode.rightNode?.leftNode    = TreeNode(val: 6)
+binaryRootNode.leftNode               = TreeNode(val: 2)
+binaryRootNode.leftNode?.leftNode     = TreeNode(val: 1)
+binaryRootNode.leftNode?.rightNode    = TreeNode(val: 3)
+
+var invertBinarryTree = InvertBinaryTree.invert(binaryRootNode)!
+
+print("binaryRootNode: \(invertBinarryTree.val)")
+print("binaryRootNode.rightNode: \(invertBinarryTree.rightNode?.val)")
+print("binaryRootNode.rightNode?.rightNode\(invertBinarryTree.rightNode?.rightNode?.val)")
+print("binaryRootNode.rightNode?.leftNode\(invertBinarryTree.rightNode?.leftNode?.val)")
+print("binaryRootNode.leftNode\(invertBinarryTree.leftNode?.val)")
+print("binaryRootNode.leftNode?.leftNode\(invertBinarryTree.leftNode?.leftNode?.val)")
+print("binaryRootNode.leftNode?.rightNode\(invertBinarryTree.leftNode?.rightNode?.val)")
+
+
