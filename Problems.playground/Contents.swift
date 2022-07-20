@@ -233,4 +233,23 @@ print("root node \(reversedLinkedNode?.next?.next?.val ?? 0)")
 print("root node \(reversedLinkedNode?.next?.next?.next?.val ?? 0)")
 print("root node \(reversedLinkedNode?.next?.next?.next?.next?.val ?? 0)")
 
+//--------------------------------------------
+        //Two Sum//
 
+class SumSolution {
+    func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
+        for i in 0..<nums.count {
+            for j in i+1..<nums.count {
+                if (nums[i] + nums[j] == target) {
+                return [i, j]
+            }
+            }
+            
+        }
+        return [0]
+    }
+}
+
+var qq = SumSolution()
+
+print(qq.twoSum([2,7,11,15], 9))
