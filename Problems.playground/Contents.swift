@@ -248,8 +248,65 @@ class SumSolution {
         }
         return [0]
     }
+    
+        //sum of two linkedlists//
+    
+    func getValFromNode(_ node:LinkedNode?) -> Int {
+            if node == nil {
+                return 0
+            }
+            else {
+                return node!.val
+            }
+         }
+        
+        func getNextNode(_ node:LinkedNode?) ->LinkedNode? {
+            if node != nil {
+                return node!.next
+            }
+            else {
+                return nil
+            }
+        }
+        
+        func addTwoNumbers(_ l1: LinkedNode?, _ l2: LinkedNode?) -> LinkedNode? {
+            if(l1==nil)&&(l2==nil) {
+                return nil
+            }
+        
+            var ll1 = l1
+            var ll2 = l2
+        
+            let head = LinkedNode(val:0)
+            var point = head
+            var carry = 0
+        
+            while (ll1 != nil) || (ll2 != nil) || carry != 0 {
+                let total = getValFromNode(ll1) + getValFromNode(ll2) + carry
+                point.val = total % 10
+                carry = total / 10
+            
+                ll1 = getNextNode(ll1)
+                ll2 = getNextNode(ll2)
+                if ll1 != nil || ll2 != nil || carry != 0 {
+                    point.next = LinkedNode(val:0)
+                    point = point.next!
+                }
+            }
+        
+            return head
+        }
 }
 
 var qq = SumSolution()
 
+var l1 = LinkedNode(val: 2)
+l1.next = LinkedNode(val: 4)
+l1.next?.next = LinkedNode(val: 3)
+
+var l2 = LinkedNode(val: 5)
+l2.next = LinkedNode(val: 6)
+l2.next?.next = LinkedNode(val: 4)
+
+print("sss= \(String(describing: qq.addTwoNumbers(l1, l2)))")
 print(qq.twoSum([2,7,11,15], 9))
