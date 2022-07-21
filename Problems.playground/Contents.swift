@@ -310,3 +310,20 @@ l2.next?.next = LinkedNode(val: 4)
 
 print("sss= \(String(describing: qq.addTwoNumbers(l1, l2)))")
 print(qq.twoSum([2,7,11,15], 9))
+
+
+// Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
+    for i in 0..<nums.count {
+        for j in i+1..<nums.count {
+            if (nums[i] + nums[j] == target) {
+            return [i, j]
+        }
+        }
+        
+    }
+    return [0]
+}
+
+print(twoSum([2,7,11,15], 9))
