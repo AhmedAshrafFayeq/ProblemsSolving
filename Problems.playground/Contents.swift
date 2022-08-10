@@ -60,6 +60,5 @@ class Solution {
 var solution = Solution()
 print(solution.twoSum([1,2,3,4], 5))
 
-
-
-
+let k = 12
+for i in stride(from: 10, to: k, by: 1) { print("i=\(i)") }
